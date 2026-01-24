@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Url Shortner</title>
+</head>
+<body>
+    <h2 style="text-align: center;">URL Shortner Service</h2>
+    <form id="urlForm" style="text-align: center;">
+        <input type="url" id="originalUrl" placeholder="Enter URL to shorten" required style="width: 300px; padding: 8px;">
+        <button type="submit" style="padding: 8px 12px;">Shorten URL</button>       
+    </form>
+    <div id="result" style="text-align: center; margin-top: 20px;"></div>
+    <script>
+        document.getElementById('urlForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const originalUrl = document.getElementById('originalUrl').value;
+            try {
+                const response = await fetch('/shorten', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ originalUrl })
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    document.getElementById('result').innerHTML = `
+                        <p>Shortened URL: <a href="${data.shortUrl}" target="_blank">${data.shortUrl}</a></p>
+                    `;
+                } else {
+                    document.getElementById('result').innerHTML = `<p style="color: red;">Error: ${data.message}</p>`;
+                }
+            } catch (error) {
+                document.getElementById('result').innerHTML = `<p style="color: red;">Error: ${error.message}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
