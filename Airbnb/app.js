@@ -20,6 +20,10 @@ app.get('/home', (req, res) => {
     res.render('home', { title: 'Airbnb : Home' });
 });
 
+app.get('/listings', (req, res) => {
+    res.render('listings', { title: 'Airbnb : Listings', listings: {title: 'Cozy Cottage', description: 'A cozy cottage in the countryside.', price: 120, image: 'https://imgs.search.brave.com/EtvfNpmFBgfVMbqiQimcaWeukCvlFJM5_m62MZTE_1E/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMjE4/NTczMDM2MC9waG90/by9ob3VzZS13aXRo/LXBvb2wtc3Vycm91/bmRlZC1ieS1uYXR1/cmUuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPTlEa3pITzN3/Qlh1UDdVN3NvUUEw/VWFLc0x3UFk4N24t/Y2xsYk5nNTFtLVU9'} });
+});
+
 // page not found handler
 app.use((req, res) => {
     res.status(404).json({message: 'Page not Found'})
