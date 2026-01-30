@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const { addHome } = require('./controllers/addHome.controller');
 const app = express();
 
 app.use(express.json())
@@ -20,8 +21,14 @@ app.get('/home', (req, res) => {
     res.render('home', { title: 'Airbnb : Home' });
 });
 
+app.get('/add-home', (req, res) => {
+    res.render('addHome', { title: 'Airbnb : Add Home' });
+});
+
+app.post('/add-home', addHome);
+
 app.get('/listings', (req, res) => {
-    res.render('listings', { title: 'Airbnb : Listings', listings: {title: 'Cozy Cottage', description: 'A cozy cottage in the countryside.', price: 120, image: 'https://imgs.search.brave.com/EtvfNpmFBgfVMbqiQimcaWeukCvlFJM5_m62MZTE_1E/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMjE4/NTczMDM2MC9waG90/by9ob3VzZS13aXRo/LXBvb2wtc3Vycm91/bmRlZC1ieS1uYXR1/cmUuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPTlEa3pITzN3/Qlh1UDdVN3NvUUEw/VWFLc0x3UFk4N24t/Y2xsYk5nNTFtLVU9'} });
+    res.render('listings', { title: 'Airbnb : Listings', listings: {title: 'Cozy Cottage', description: 'A cozy cottage in the countryside.', price_per_night: 120, image: 'https://imgs.search.brave.com/EtvfNpmFBgfVMbqiQimcaWeukCvlFJM5_m62MZTE_1E/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMjE4/NTczMDM2MC9waG90/by9ob3VzZS13aXRo/LXBvb2wtc3Vycm91/bmRlZC1ieS1uYXR1/cmUuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPTlEa3pITzN3/Qlh1UDdVN3NvUUEw/VWFLc0x3UFk4N24t/Y2xsYk5nNTFtLVU9'} });
 });
 
 // page not found handler
@@ -30,14 +37,6 @@ app.use((req, res) => {
 });
 
 // Error handling middleware
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    const status = err.status || 500;
-    const message = err.message || 'Internal Server Error';
-    res.status(status).json({
-        message: message,
-        error: process.env.NODE_ENV === 'development' ? err : {}
-    });
-});
+app.use(require('./middlewares/error.middleware'));
 
 module.exports = app;
