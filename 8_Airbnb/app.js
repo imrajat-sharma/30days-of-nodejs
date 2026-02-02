@@ -1,4 +1,7 @@
 const express = require('express');
+const fs = require('fs');
+const path = require('path');
+const asyncHandler = require('./utils/asyncHandler');
 const { addHome } = require('./controllers/addHome.controller');
 const app = express();
 
@@ -13,7 +16,7 @@ app.set('views', __dirname + '/views');
 
 //default route
 app.get('/', (req, res) => {
-    res.status(200).json({message: 'Welcome to Airbnb API'})
+    res.redirect('/home');
 });
 
 //home route
@@ -27,13 +30,25 @@ app.get('/add-home', (req, res) => {
 
 app.post('/add-home', addHome);
 
-app.get('/listings', (req, res) => {
-    res.render('listings', { title: 'Airbnb : Listings', listings: {title: 'Cozy Cottage', description: 'A cozy cottage in the countryside.', price_per_night: 120, image: 'https://imgs.search.brave.com/EtvfNpmFBgfVMbqiQimcaWeukCvlFJM5_m62MZTE_1E/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMjE4/NTczMDM2MC9waG90/by9ob3VzZS13aXRo/LXBvb2wtc3Vycm91/bmRlZC1ieS1uYXR1/cmUuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPTlEa3pITzN3/Qlh1UDdVN3NvUUEw/VWFLc0x3UFk4N24t/Y2xsYk5nNTFtLVU9'} });
+app.get('/listings',(req, res) => {
+    try {
+    const listingsPath = path.join(__dirname, 'db/home.db.json');
+    fs.readFile(listingsPath, 'utf8', (err, data) => {
+        if (err) {
+            throw new Error('Error reading listings file');
+        }
+        const listings = JSON.parse(data);
+        const added = req.query.added === 'true';
+        res.render('listings', { title: 'Airbnb : Listings', listings: listings, added  });
+    });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
 });
 
 // page not found handler
 app.use((req, res) => {
-    res.status(404).json({message: 'Page not Found'})
+    res.status(404).render('notfound', { title: '404 - Page Not Found' });
 });
 
 // Error handling middleware

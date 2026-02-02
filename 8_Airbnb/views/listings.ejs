@@ -1,0 +1,12 @@
+<%- include('partials/navbar.ejs') %>
+<% if (added) { %>
+    <div style="max-width: 600px; margin: 20px auto; padding: 10px; border: 1px solid #4CAF50; border-radius: 5px; background-color: #dff0d8; color: #3c763d; text-align: center;">
+      Home listing added successfully!
+    </div>
+<% } %>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; padding: 20px;">
+
+  <%- include('partials/homeCards.ejs', { listings: listings }) %>
+  </div>
+</body>
+</html>

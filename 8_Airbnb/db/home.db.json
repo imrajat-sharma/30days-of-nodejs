@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Cozy Cottage",
+    "image": "https://imgs.search.brave.com/EtvfNpmFBgfVMbqiQimcaWeukCvlFJM5_m62MZTE_1E/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMjE4/NTczMDM2MC9waG90/by9ob3VzZS13aXRo/LXBvb2wtc3Vycm91/bmRlZC1ieS1uYXR1/cmUuanBnP3M9NjEy/eDYxMiZ3PTAmaz0y/MCZjPTlEa3pITzN3/Qlh1UDdVN3NvUUEw/VWFLc0x3UFk4N24t/Y2xsYk5nNTFtLVU9",
+    "location": "Lakeview",
+    "price_per_night": 120,
+    "description": "A cozy cottage in the countryside."
+  },
+  {
+    "id": 2,
+    "title": "Overwater villa Airbnb Maldives",
+    "description": "a minimalist and cosy overwater villa with a private pool",
+    "location": "Maldives",
+    "price_per_night": 499,
+    "image": "https://imgs.search.brave.com/YojRZJkP3O9PDyefRVDUYKSzjfsJ9E_sWrSX3v-kbHQ/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudHJpcHppbGxh/LmNvbS90aHVtYi80/LzMvMjMwOTc5Xzgw/MHguanBn"
+  },
+  {
+    "id": 3,
+    "title": "Minimal White House ",
+    "description": "A minimal and white premium room for travellers",
+    "location": "New York",
+    "price_per_night": 249,
+    "image": "https://imgs.search.brave.com/kBmKPY7Uid2nJHh_Ifqpv6mYbheIFAEkrQ3ov1UTZIM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudHJpcHppbGxh/LmluL21lZGlhLzE5/NDIvY29udmVyc2lv/bnMvZjA5ODVlOWQt/NmIxNC00YmU5LTkw/MGYtZWM3NjFkYzEw/OTA3LTEwMjR4NzY4/LXc3Njgud2VicA"
+  }
+]
