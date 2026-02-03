@@ -22,5 +22,13 @@
     "location": "New York",
     "price_per_night": 249,
     "image": "https://imgs.search.brave.com/kBmKPY7Uid2nJHh_Ifqpv6mYbheIFAEkrQ3ov1UTZIM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudHJpcHppbGxh/LmluL21lZGlhLzE5/NDIvY29udmVyc2lv/bnMvZjA5ODVlOWQt/NmIxNC00YmU5LTkw/MGYtZWM3NjFkYzEw/OTA3LTEwMjR4NzY4/LXc3Njgud2VicA"
+  },
+  {
+    "id": 4,
+    "title": "My House Fresh",
+    "description": "My House is clean and beautiful",
+    "location": "New York",
+    "price_per_night": 299,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4jVtPnA-7K5wgWE_5E5d5QiqOv2mcDHPg1A&s"
   }
 ]
