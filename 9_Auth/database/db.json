@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": "9d61c67e-1c5b-40b6-84f1-5d632c5fe575",
+      "name": "Rajat ",
+      "email": "rajat@test.com",
+      "password": "$2b$10$aYKsY4xOmpA/qmIgbBB8jODf9uAuy1HSH6PcRO/MtpEEhAIZxkHDO"
+    },
+    {
+      "id": "293f8d30-d590-4992-a3e2-5ca5c1b1d4a4",
+      "name": "rajat sharma",
+      "email": "rajats@test.com",
+      "password": "$2b$10$1DalHPHcfubDahzm9h8oeOOcgvRIzuMIwsRe9hnai/jNHeL4QZWbi"
+    },
+    {
+      "id": "81fb31c2-04b7-4c6e-adf2-c9da9cd13d8d",
+      "name": "rajat sharma k",
+      "email": "rajatsh@test.com",
+      "password": "$2b$10$2HlkydpHXso9fd/Wlvk/n.oqgO96D/UlppkNImNDGbd9IeffwlaNi"
+    },
+    {
+      "id": "cc9a8e93-3fad-4bab-ac69-17b4c2d38894",
+      "name": "rajat sharma kh",
+      "email": "rajatshh@test.com",
+      "password": "$2b$10$OyFatf7Nvs3ilE.Kw7h1pO8sgTnBqM8JU3egzCo0qODKVi.0hTRAK"
+    }
+  ]
+}

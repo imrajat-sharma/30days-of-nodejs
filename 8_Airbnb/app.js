@@ -6,7 +6,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// Set EJS as templating engine
+//nejs view engine setup
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
