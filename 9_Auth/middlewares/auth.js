@@ -1,5 +1,4 @@
 const jwt = require("jsonwebtoken");
-
 const authHandler = (req, res, next) => {
   let token;
   
