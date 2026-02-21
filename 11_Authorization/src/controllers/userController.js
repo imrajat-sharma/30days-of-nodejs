@@ -1,13 +1,14 @@
 const User = require("../model/userModel");
 const { signToken } = require("../utils/jwt");
+const ApiError = require("../utils/ApiError");
 
-exports.registerUser = async (req, res) => {
+exports.registerUser = async (req, res, next) => {
   const { name, email, password } = req.body;
 
   const existingUser = await User.findOne({ email });
 
   if (existingUser) {
-    return res.status(400).send("User already exists");
+    return next(new ApiError("Email already in use", 400));
   }
 
   await User.create({ name, email, password });

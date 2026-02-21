@@ -1,3 +1,6 @@
+// @desc    Demonstrate throwing a custom error
+// @route   GET /custom-error
+// @access  Public
 class ApiError extends Error {
   constructor(message, statusCode) {
     super(message);
