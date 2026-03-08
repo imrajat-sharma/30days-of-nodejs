@@ -8,6 +8,7 @@ const {
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
+require("dotenv").config();
 
 app.use(express.json());
 
@@ -50,7 +51,10 @@ app.post("/login", async (req, res) => {
     const refreshToken = generateRefreshToken(safeUser);
     user.refreshToken = refreshToken;
     await user.save();
-    res.cookie("refreshToken", refreshToken, { httpOnly: true, maxAge: 30 * 24 * 60 * 60 * 1000 });
+    res.cookie("refreshToken", refreshToken, {
+      httpOnly: true,
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    });
     return res.status(200).json({ message: "Login successful", accessToken });
   } catch (error) {
     return res.status(500).json({ message: "Internal server error" });
@@ -73,14 +77,19 @@ app.post("/refresh-token", async (req, res) => {
 
     const isValid = user && user.refreshToken === refreshToken;
     if (!isValid) {
-      return res.status(401).json({ message: "Refresh token invalid or revoked" });
+      return res
+        .status(401)
+        .json({ message: "Refresh token invalid or revoked" });
     }
     const safeUser = { _id: user._id, username: user.username };
 
     const newRefreshToken = generateRefreshToken(safeUser);
     user.refreshToken = newRefreshToken;
     await user.save();
-    res.cookie("refreshToken", newRefreshToken, { httpOnly: true, maxAge: 30 * 24 * 60 * 60 * 1000 });
+    res.cookie("refreshToken", newRefreshToken, {
+      httpOnly: true,
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    });
 
     const newAccessToken = generateAccessToken(safeUser);
 
@@ -93,9 +102,11 @@ app.post("/refresh-token", async (req, res) => {
     }
 
     if (err.name === "JsonWebTokenError") {
-      return res.status(403).json({ message: "Invalid refresh token signature" });
+      return res
+        .status(403)
+        .json({ message: "Invalid refresh token signature" });
     }
-    
+
     return res.status(500).json({ message: "Internal server error" });
   }
 });
